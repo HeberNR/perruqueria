@@ -2,23 +2,23 @@ package model;
 
 public class Mascota {
 
+  private static int contador = 0;
   private int id;
   private String nombre;
   private String raza;
-  private String especie;
-  private String edad;
+  private EspecieMascota especieMascota;
+  private int edad;
   private String nombreDuenio;
 
 
   //constructor de mascota
-  public Mascota(int id, String nombre, String raza,
-                  String especie, String edad, String nombreDuenio) {
+  public Mascota(String nombre, String raza,
+                 EspecieMascota especieMascota, int edad, String nombreDuenio) {
 
-    id++;
-    this.id = id;
+    this.id = ++contador;
     this.nombre = nombre;
     this.raza = raza;
-    this.especie = especie;
+    this.especieMascota = especieMascota;
     this.edad = edad;
     this.nombreDuenio = nombreDuenio;
   }
@@ -36,11 +36,11 @@ public class Mascota {
     return this.raza;
   }
 
-  public String getEspecie() {
-    return this.especie;
+  public EspecieMascota getEspecie() {
+    return this.especieMascota;
   }
 
-  public String getEdad() {
+  public int getEdad() {
     return this.edad;
   }
 
@@ -49,10 +49,6 @@ public class Mascota {
   }
 
   // setters
-  public void setId (int id) {
-    this.id = id;
-  }
-
   public void setNombre(String nombre) {
     this.nombre = nombre;
   }
@@ -61,11 +57,11 @@ public class Mascota {
     this.raza = raza;
   }
 
-  public void setEspecie(String especie) {
-    this.especie = especie;
+  public void setEspecie(EspecieMascota especieMascota) {
+    this.especieMascota = especieMascota;
   }
 
-  public void setEdad(String edad) {
+  public void setEdad(int edad) {
     this.edad = edad;
   }
 
@@ -80,7 +76,7 @@ public class Mascota {
         "id=" + id +
         ", nombre='" + nombre + '\'' +
         ", raza='" + raza + '\'' +
-        ", especie='" + especie + '\'' +
+        ", especie='" + especieMascota + '\'' +
         ", edad='" + edad + '\'' +
         ", nombreDuenio='" + nombreDuenio + '\'' +
         '}';
@@ -89,7 +85,7 @@ public class Mascota {
   public String mostrarDatos() {
     return "ID: " + id + "\n"
         + "Nombre: " + nombre + "\n"
-        + "Especie: " + especie + "\n"
+        + "Especie: " + especieMascota + "\n"
         + "Edad: " + edad + "\n"
         + "Raza: " + raza + "\n"
         + "Nombre del dueño: " + nombreDuenio;

@@ -1,18 +1,20 @@
 package model;
 
 public class Servicio {
+
+  private static int contador = 0;
   private int id;
-  private String tipoServicio;
+  private TipoServicio tipoServicio;
   private String descripcion;
   private int duracion; //en minutos
   private int precio;
 
   //constructor servicio
 
-  public Servicio (int id, String tipoServicio, String descripcion,
-                   int duracion, int precio) {
-    id++;
-    this.id = id;
+  public Servicio(TipoServicio tipoServicio, String descripcion,
+                  int duracion, int precio) {
+
+    this.id = ++contador;
     this.descripcion = descripcion;
     this.tipoServicio = tipoServicio;
     this.duracion = duracion;
@@ -23,7 +25,7 @@ public class Servicio {
     return id;
   }
 
-  public String getTipoServicio() {
+  public TipoServicio getTipoServicio() {
     return tipoServicio;
   }
 
@@ -39,11 +41,7 @@ public class Servicio {
     return precio;
   }
 
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public void setTipoServicio(String tipoServicio) {
+  public void setTipoServicio(TipoServicio tipoServicio) {
     this.tipoServicio = tipoServicio;
   }
 
