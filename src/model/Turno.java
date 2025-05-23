@@ -9,6 +9,8 @@ public class Turno {
   private EstadoServicio estado;
   private Mascota mascota;
   private Servicio servicio;
+  public static final int MAX_TURNOS_DIARIOS = 10;
+
 
   //constructor de turno
   public Turno(String fecha, String hora, EstadoServicio estado, Mascota mascota, Servicio servicio) {
@@ -85,7 +87,20 @@ public class Turno {
         + "Mascota: " + mascota.getNombre() + " (" + mascota.getEspecie() + ")\n"
         + "Nombre del dueño/a: " + mascota.getNombreDuenio() + "\n"
         + "Servicio: " + servicio.getTipoServicio() + " - " + servicio.getDescripcion() + "\n"
-        + "Precio: $" + servicio.getPrecio();
+        + "Precio: $" + servicio.getPrecio() + "\n"
+        + "-------------------------------------\n";
   }
+
+  public boolean esTurnoActivo() {
+    return estado == EstadoServicio.PROGRAMADO;
+  }
+
+  public static void maxTurnos(Turno[] turnos) {
+    if (turnos.length > MAX_TURNOS_DIARIOS) {
+      System.out.println("No se pueden agregar más turnos hoy.");
+    }
+
+  }
+
 
 }

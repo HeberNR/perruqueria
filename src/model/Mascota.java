@@ -88,6 +88,6 @@ public class Mascota {
         + "Especie: " + especieMascota + "\n"
         + "Edad: " + edad + "\n"
         + "Raza: " + raza + "\n"
-        + "Nombre del dueño: " + nombreDuenio;
+        + "Nombre del dueño: " + nombreDuenio + "\n";
   }
 }

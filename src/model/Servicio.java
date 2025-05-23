@@ -1,5 +1,9 @@
 package model;
 
+import org.w3c.dom.ls.LSOutput;
+
+import java.nio.file.FileAlreadyExistsException;
+
 public class Servicio {
 
   private static int contador = 0;
@@ -73,6 +77,18 @@ public class Servicio {
         + "Tipo de servicio: " + tipoServicio + "\n"
         + "Descripcion: " + descripcion + "\n"
         + "Duracion: " + duracion + "\n"
-        + "Precio: " + precio;
+        + "Es servicio largo? " + esServicioLargo(duracion) + "\n"
+        + "Precio (con IVA incluido): " + calcularPrecioConIVA(precio) + "\n"
+        + "------------------------------------------------------------\n";
+  }
+
+  public static boolean esServicioLargo(int duracion) {
+    return (duracion > 60);
+  }
+
+  public static double calcularPrecioConIVA(double precioBase) {
+    final double IVA = 0.21;
+    return precioBase * (1 + IVA);
   }
 }
+
