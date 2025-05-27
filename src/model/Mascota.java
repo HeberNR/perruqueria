@@ -72,14 +72,14 @@ public class Mascota {
   //métodos
   @Override
   public String toString() {
-    return "Mascota{" +
-        "id=" + id +
-        ", nombre='" + nombre + '\'' +
-        ", raza='" + raza + '\'' +
-        ", especie='" + especieMascota + '\'' +
-        ", edad='" + edad + '\'' +
-        ", nombreDuenio='" + nombreDuenio + '\'' +
-        '}';
+    return "Mascota{"
+        + "id=" + id
+        + ", nombre='" + nombre + '\''
+        + ", raza='" + raza + '\''
+        + ", especie='" + especieMascota + '\''
+        + ", edad='" + edad + '\''
+        + ", nombreDuenio='" + nombreDuenio + '\''
+        + '}';
   }
 
   public String mostrarDatos() {

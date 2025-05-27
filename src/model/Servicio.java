@@ -1,9 +1,5 @@
 package model;
 
-import org.w3c.dom.ls.LSOutput;
-
-import java.nio.file.FileAlreadyExistsException;
-
 public class Servicio {
 
   private static int contador = 0;
@@ -63,20 +59,19 @@ public class Servicio {
 
   @Override
   public String toString() {
-    return "Servicio{" +
-        "id=" + id +
-        ", tipoServicio='" + tipoServicio + '\'' +
-        ", descripcion='" + descripcion + '\'' +
-        ", duracion=" + duracion +
-        ", precio=" + precio +
-        '}';
+    return "Servicio{"
+        + "id=" + id
+        + ", tipoServicio='" + tipoServicio + '\''
+        + ", descripcion='" + descripcion + '\''
+        + ", duracion=" + duracion +
+        ", precio=" + precio
+        + '}';
   }
 
   public String mostrarDatos() {
-    return "ID: " + id + "\n"
-        + "Tipo de servicio: " + tipoServicio + "\n"
+    return "Tipo de servicio: " + tipoServicio + "\n"
         + "Descripcion: " + descripcion + "\n"
-        + "Duracion: " + duracion + "\n"
+        + "Duracion: " + duracion + " min" + "\n"
         + "Es servicio largo? " + esServicioLargo(duracion) + "\n"
         + "Precio (con IVA incluido): " + calcularPrecioConIVA(precio) + "\n"
         + "------------------------------------------------------------\n";

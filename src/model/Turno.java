@@ -13,7 +13,8 @@ public class Turno {
 
 
   //constructor de turno
-  public Turno(String fecha, String hora, EstadoServicio estado, Mascota mascota, Servicio servicio) {
+  public Turno(String fecha, String hora, EstadoServicio estado,
+               Mascota mascota, Servicio servicio) {
     this.id = ++contador;
     this.fecha = fecha;
     this.hora = hora;
@@ -70,14 +71,14 @@ public class Turno {
 
   @Override
   public String toString() {
-    return "Turno{" +
-        "id=" + id +
-        ", fecha='" + fecha + '\'' +
-        ", hora='" + hora + '\'' +
-        ", estado='" + estado + '\'' +
-        ", mascota=" + mascota +
-        ", servicio=" + servicio +
-        '}';
+    return "Turno{"
+        + "id=" + id
+        + ", fecha='" + fecha + '\''
+        + ", hora='" + hora + '\''
+        + ", estado='" + estado + '\''
+        + ", mascota=" + mascota
+        + ", servicio=" + servicio
+        + '}';
   }
 
   public String mostrarDatos() {
@@ -87,8 +88,7 @@ public class Turno {
         + "Mascota: " + mascota.getNombre() + " (" + mascota.getEspecie() + ")\n"
         + "Nombre del dueño/a: " + mascota.getNombreDuenio() + "\n"
         + "Servicio: " + servicio.getTipoServicio() + " - " + servicio.getDescripcion() + "\n"
-        + "Precio: $" + servicio.getPrecio() + "\n"
-        + "-------------------------------------\n";
+        + "Precio: $" + servicio.getPrecio() + "\n";
   }
 
   public boolean esTurnoActivo() {
