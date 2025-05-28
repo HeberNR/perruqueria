@@ -8,8 +8,15 @@ public class PeluqueriaCaninaApp {
     Turno[] turnos = DatosPrecargados.turnos;
     Servicio[] servicios = DatosPrecargados.servicios;
 
-    // Buscar mascota por nombre
-    String nombreBuscado = "Luna"; // cambiar por scanner
+    buscarMascotaPorNombre(mascotas, "Luna");
+    contarMascotasPorEspecie(mascotas, EspecieMascota.GATO);
+    mostrarServiciosLargos(servicios);
+    mostrarTurnos(turnos);
+    agruparPorEstado(turnos);
+    validarTurnosPorDia(turnos);
+  }
+
+  private static void buscarMascotaPorNombre(Mascota[] mascotas, String nombreBuscado) {
     boolean encontrada = false;
     for (Mascota m : mascotas) {
       if (m.getNombre().equalsIgnoreCase(nombreBuscado)) {
@@ -20,32 +27,31 @@ public class PeluqueriaCaninaApp {
     if (!encontrada) {
       System.out.println("Mascota no encontrada.");
     }
+  }
 
-    // Contar mascotas por especie
-    EspecieMascota especieBuscada = EspecieMascota.GATO; // cambiar por scanner
+  private static void contarMascotasPorEspecie(Mascota[] mascotas, EspecieMascota especie) {
     int contador = 0;
     for (Mascota m : mascotas) {
-      if (m.getEspecie() == especieBuscada) {
+      if (m.getEspecie() == especie) {
         contador++;
       }
     }
-    System.out.println("Cantidad de mascotas de especie " + especieBuscada + ": " + contador);
+    System.out.println("Cantidad de mascotas de especie " + especie + ": " + contador);
+  }
 
-    // Mostrar si los servicios son largos
+  private static void mostrarServiciosLargos(Servicio[] servicios) {
     for (Servicio s : servicios) {
       System.out.println("Servicio: " + s.getDescripcion() + " - Largo: " + s.esServicioLargo());
     }
+  }
 
-    // Mostrar si el turno está activo
+  private static void mostrarTurnos(Turno[] turnos) {
     for (Turno t : turnos) {
       System.out.println(t.mostrarDatos());
     }
+  }
 
-
-    // Contar cantidad de turnos por estado
-    agruparPorEstado(turnos);
-
-    // Validar cantidad de turnos por día
+  private static void validarTurnosPorDia(Turno[] turnos) {
     for (int i = 0; i < turnos.length; i++) {
       int conteo = 0;
       String fechaActual = turnos[i].getFecha();
