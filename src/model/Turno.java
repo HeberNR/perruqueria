@@ -82,20 +82,28 @@ public class Turno {
   }
 
   public String mostrarDatos() {
-    return "Turno N°: " + id + "\n"
-        + "Fecha: " + fecha + " a las " + hora + "\n"
-        + "Estado: " + estado + "\n"
-        + "Mascota: " + mascota.getNombre() + " (" + mascota.getEspecie() + ")\n"
-        + "Nombre del dueño/a: " + mascota.getNombreDuenio() + "\n"
-        + "Servicio: " + servicio.getTipoServicio() + " - " + servicio.getDescripcion() + "\n"
-        + "Precio: $" + servicio.getPrecio() + "\n";
+    String datos = "────────────────────────────────────────────\n";
+    datos += "📋 Turno N°: " + id + "\n";
+    datos += "📅 Fecha: " + fecha + " a las " + hora + "\n";
+    datos += "📌 Estado: " + estado + " (Activo: " + (esTurnoActivo() ? "Sí" : "No") + ")\n";
+    datos += "🐾 Mascota: " + mascota.getNombre() + " (" + mascota.getEspecie() + ")\n";
+    datos += "👤 Dueño/a: " + mascota.getNombreDuenio() + "\n";
+    datos += "🧼 Servicio: " + servicio.getTipoServicio() + " - " + servicio.getDescripcion() + "\n";
+    datos += "⏱️ Duración: " + servicio.getDuracion() + " minutos (" + (servicio.esServicioLargo() ? "Largo" : "Corto") + ")\n";
+    datos += "💲 Precio: $" + servicio.getPrecio() + "\n";
+    datos += "💲 IVA incluido: $" + servicio.calcularPrecioConIVA(servicio.getPrecio()) + "\n";
+    datos += "────────────────────────────────────────────\n";
+
+    return datos;
   }
+
+
 
   public boolean esTurnoActivo() {
     return this.estado == EstadoServicio.PROGRAMADO;
   }
 
-  public static boolean puedeCrearTurno(String fecha, Turno[] turnos) {
+    public static boolean puedeCrearTurno(String fecha, Turno[] turnos) {
     int contadorTurnos = 0;
     for (Turno turno : turnos) {
       if (turno != null && turno.getFecha().equals(fecha)) {

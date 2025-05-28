@@ -72,18 +72,18 @@ public class Servicio {
     return "Tipo de servicio: " + tipoServicio + "\n"
         + "Descripcion: " + descripcion + "\n"
         + "Duracion: " + duracion + " min" + "\n"
-        + "Es servicio largo? " + esServicioLargo(duracion) + "\n"
+        + "Es servicio largo? " + esServicioLargo() + "\n"
         + "Precio (con IVA incluido): " + calcularPrecioConIVA(precio) + "\n"
         + "-----------------------------------------------\n";
   }
 
-  public static boolean esServicioLargo(int duracion) {
-    return (duracion > 60);
-  }
-
   public static double calcularPrecioConIVA(double precioBase) {
     final double IVA = 0.21;
-    return precioBase * (1 + IVA);
+    return precioBase + (precioBase * IVA);
+  }
+
+  public boolean esServicioLargo() {
+    return this.duracion > 60;
   }
 }
 
