@@ -74,7 +74,7 @@ public class Servicio {
         + "Duracion: " + duracion + " min" + "\n"
         + "Es servicio largo? " + esServicioLargo(duracion) + "\n"
         + "Precio (con IVA incluido): " + calcularPrecioConIVA(precio) + "\n"
-        + "------------------------------------------------------------\n";
+        + "-----------------------------------------------\n";
   }
 
   public static boolean esServicioLargo(int duracion) {

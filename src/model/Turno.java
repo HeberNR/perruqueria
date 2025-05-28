@@ -92,15 +92,42 @@ public class Turno {
   }
 
   public boolean esTurnoActivo() {
-    return estado == EstadoServicio.PROGRAMADO;
+    return this.estado == EstadoServicio.PROGRAMADO;
   }
 
-  public static void maxTurnos(Turno[] turnos) {
-    if (turnos.length > MAX_TURNOS_DIARIOS) {
-      System.out.println("No se pueden agregar más turnos hoy.");
+  public static boolean puedeCrearTurno(String fecha, Turno[] turnos) {
+    int contadorTurnos = 0;
+    for (Turno turno : turnos) {
+      if (turno != null && turno.getFecha().equals(fecha)) {
+        contadorTurnos++;
+      }
     }
-
+    return contadorTurnos < MAX_TURNOS_DIARIOS;
   }
 
+  public static void agruparPorEstado(Turno[] turnos) {
+    int programados = 0;
+    int realizados = 0;
+    int cancelados = 0;
 
+    for (Turno turno : turnos) {
+      if (turno != null) {
+        switch (turno.getEstado()) {
+          case PROGRAMADO:
+            programados++;
+            break;
+          case REALIZADO:
+            realizados++;
+            break;
+          case CANCELADO:
+            cancelados++;
+            break;
+        }
+      }
+    }
+    System.out.println("Resumen de turnos por estado:");
+    System.out.println("Programados: " + programados);
+    System.out.println("Realizados: " + realizados);
+    System.out.println("Cancelados: " + cancelados);
+  }
 }
